@@ -183,7 +183,9 @@ class TreeEnsembleBase:
         spec_node = self.tree_parameters.nodes.add()
         spec_node.treeId = tree_id
         spec_node.nodeId = node_id
-        spec_node.branchFeatureIndex = int(feature_index)
+        print(feature_index)
+        # feature index should be splitted info f + number of features
+        spec_node.branchFeatureIndex = int(feature_index[1:])
         spec_node.branchFeatureValue = feature_value
         spec_node.trueChildNodeId = true_child_id
         spec_node.falseChildNodeId = false_child_id
