@@ -186,6 +186,8 @@ class TreeEnsembleBase:
         print(feature_index)
         # feature index should be splitted info f + number of features
         spec_node.branchFeatureIndex = int(feature_index[1:])
+        # Tree Assemebly class has a wierd behaviour where it fails to turn the default XGBoost feature_index like 'f0' and 'f1' into an int which is a minor mistake, this fix implements a patch by removing the f in the front
+        # - we do not have to worry about breaking cuztomizes feature indexes since they no longer exists in the newer versions of XGBoost library
         spec_node.branchFeatureValue = feature_value
         spec_node.trueChildNodeId = true_child_id
         spec_node.falseChildNodeId = false_child_id
